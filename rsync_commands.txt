@@ -1,0 +1,31 @@
+##Installing Rsync
+sudo apt update
+sudo apt-get install rsync
+
+#Syncing Across Local Machine
+rsync -av SOURCE DESTINATION
+
+#Rsync Commands:
+rsync -av –dry-run SOURCE DESTINATION
+rsync -av –delete SOURCE DESTINATION
+
+#Pushing to Remote Machine
+rsync -zaP SOURCE user@x.x.x.x:DESTINATION
+
+#Pulling from Remote Machine
+rsync -zaP user@x.x.x.x:SOURCE DESTINATION
+
+#Automated Backups(crontab)
+crontab -e
+0 8 * * 5 rsync -a Original/ arewas@192.168.10.13:~/Desktop/
+crontab -l
+
+#Alternative Method For crontab
+vi /etc/cron.d/backup.cron
+0 8 * * 5 rsync -av Original/ arewas@192.168.10.13:~/Desktop/ >> /var/log/cron.log 2>&1
+touch /var/log/cron.log
+crontab /etc/cron.d/backup.cron
+cron
+cat /var/log/cron.log
+###
+

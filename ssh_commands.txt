@@ -1,0 +1,22 @@
+#Install SSH Server:
+sudo apt update
+sudo apt install openssh-server
+sudo systemctl status ssh
+#Find IP Address:
+ifconfig
+#SSH into the remote Machine:
+ssh user@ipaddress
+#EXit from Remote Machine:
+exit
+#Generate SSH Keys:
+ssh-keygen
+#View SSH keys:
+cd ~/.ssh
+ls -la
+#Copy SSH keys to remote Machine:
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@ipaddress
+#SSH into remote Machine using keys:
+ssh user@ipaddress
+#View SSH public keys in local Remote Machine.
+cd  ~/. ssh/authorized_keys
+
